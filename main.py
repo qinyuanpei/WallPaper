@@ -20,6 +20,7 @@ response = requests.get(searchURL)
 print(u'正在从Unsplash上搜索图片...')
 
 # Parse Images
+print(response)
 data = json.loads(response.text)
 results = data['photos']['results']
 print(u'已为您检索到图片共%s张' % str(len(results)))
