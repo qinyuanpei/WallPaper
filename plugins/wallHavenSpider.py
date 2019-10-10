@@ -6,21 +6,22 @@ import json
 import random
 import requests
 from os import path
+from bs4 import BeautifulSoup
 
 class WallHavenSpider:
 
     def getImage(self,downloadFolder): 
         url = 'https://alpha.wallhaven.cc/wallpaper/' 
-        pattern = r'/small.+?(jpg|png)' 
         response = requests.get(url) 
         print(response.text)
-        mattch = re.search(pattern, response.text) 
-        imgFile = ''
-        if mattch: 
-            rawUrl = 'https://th.wallhaven.cc' + mattch.group(0)
-            rawUrl = rawUrl.replace('https://th.wallhaven.cc/small','https://w.wallhaven.cc/full')
+        soup = BeautifulSoup(response.text,'html.parser')
+        imgs = soup.find_all('img')
+        length = len(imgs)
+        if length > 0:
+            match = random.choice(imgs)
+            rawUrl = match.get('src')
             rawId = rawUrl.split('/')[-1]
-            rawUrl = rawUrl.replace(rawId, 'wallhaven-' + rawId)
+            rawUrl = 'https://w.wallhaven.cc/full/' + rawId[0:2] + '/wallhaven-' + rawId
             raw = requests.get(rawUrl) 
             imgFile = os.path.join(downloadFolder, rawId)
             with open(imgFile,'wb') as f:
