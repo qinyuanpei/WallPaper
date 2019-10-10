@@ -6,6 +6,7 @@ import random
 import requests
 from os import path
 
+# 必应每日壁纸插件
 class BingSpider:
 
     def getImage(self, downloadFolder):
