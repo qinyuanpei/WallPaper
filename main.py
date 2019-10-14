@@ -12,8 +12,38 @@ from os import path
 from PIL import Image
 from bs4 import BeautifulSoup
 from PIL import Image
+import logging
 import win32gui ,win32con, win32api
 from unsplashSpider import UnsplashSpider
+from watchdog.observers import Observer
+from watchdog.events import LoggingEventHandler
+from watchdog.events import FileSystemEventHandler
+
+# 监听配置变化
+class LoggingEventHandler(FileSystemEventHandler):
+
+    def on_moved(self, event):
+        super(LoggingEventHandler, self).on_moved(event)
+        what = 'directory' if event.is_directory else 'file'
+        logging.info("Moved %s: from %s to %s", what, event.src_path, event.dest_path)
+
+    def on_created(self, event):
+        super(LoggingEventHandler, self).on_created(event)
+        what = 'directory' if event.is_directory else 'file'
+        logging.info("Created %s: %s", what, event.src_path)
+
+    def on_deleted(self, event):
+        super(LoggingEventHandler, self).on_deleted(event)
+        what = 'directory' if event.is_directory else 'file'
+        logging.info("Deleted %s: %s", what, event.src_path)
+
+    def on_modified(self, event):
+        super(LoggingEventHandler, self).on_modified(event)
+        what = 'directory' if event.is_directory else 'file'
+        confPath = os.path.join(sys.path[0],'config.ini')
+        if(what =='file' and event.src_path == confPath):
+            importlib.reload(module)
+        logging.info("Modified %s: %s", what, event.src_path)
 
 # 初始化配置
 def init(confPath,addonPath):
@@ -72,8 +102,8 @@ def main():
         if(not check(pluginFile,addonPath)):
             print('插件%s不存在或配置不正确' % pluginName)
             return
-        module = importlib.import_module('.',pluginFile.replace('.py',''))
-        instance = getattr(module,pluginName)
+        module = importlib.import_module('.', pluginFile.replace('.py',''))
+        instance = getattr(module, pluginName)
         imageFile = instance().getImage(downloadFolder)
         setWallPaper(imageFile)
 

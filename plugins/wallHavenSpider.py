@@ -8,6 +8,7 @@ import requests
 from os import path
 from bs4 import BeautifulSoup
 
+# WallHaven壁纸插件
 class WallHavenSpider:
 
     def getImage(self,downloadFolder): 

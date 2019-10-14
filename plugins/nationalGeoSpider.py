@@ -14,7 +14,7 @@ class NationalGeoSpider:
     def getImage(self,downloadFolder): 
         url = 'https://www.nationalgeographic.com/photography/photo-of-the-day/_jcr_content/.gallery.json' 
         response = requests.get(url) 
-        print(response.text)
+        # print(response.text)
         data = json.loads(response.text)
         imgs = data['items']
         length = len(imgs)
