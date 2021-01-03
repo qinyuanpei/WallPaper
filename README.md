@@ -6,7 +6,9 @@
 * [国家地理](https://www.nationalgeographic.com/photography/photo-of-the-day/2019/10/plane-fuel-pilot-aerial/)
 
 # 使用方法
-python main.py 或者 main.exe
+```
+python main.py
+```
 
 # 插件开发
 在plugins目录中新建一个.py文件，类名任意，只需要实现getImage()方法即可：
