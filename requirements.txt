@@ -34,7 +34,7 @@ pep562==1.0
 Pillow==7.1.0
 pycparser==2.19
 pygame==1.9.6
-Pygments==2.4.2
+Pygments==2.7.4
 pymdown-extensions==6.1
 python-dateutil==2.8.0
 python-frontmatter==0.4.5
