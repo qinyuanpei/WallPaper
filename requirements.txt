@@ -49,7 +49,7 @@ snownlp==0.12.3
 soupsieve==1.9.4
 textrank4zh==0.3
 tornado==6.0.3
-urllib3==1.25.3
+urllib3==1.25.8
 watchdog==0.9.0
 Werkzeug==0.16.0
 zope.interface==4.6.0
