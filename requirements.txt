@@ -27,7 +27,7 @@ mkdocs-material==4.4.2
 mkdocs-minify-plugin==0.2.1
 mp3play==0.1.15
 networkx==2.3
-numpy==1.17.0
+numpy==1.22.0
 openpyxl==3.0.0
 pathtools==0.1.2
 pep562==1.0
