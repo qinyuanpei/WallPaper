@@ -1,9 +1,10 @@
-# WallPaper
+﻿# WallPaper
 一个基于Python的Windows下的壁纸更换工具，支持以扩展的方式从不同源上抓取壁纸。目前已支持以下站点：
 * [Unsplash](https://unsplash.com) (默认)
 * [必应壁纸](https://cn.bing.com/)
 * [WallHaven](https://wallhaven.cc)
 * [国家地理](https://www.nationalgeographic.com/photography/photo-of-the-day/2019/10/plane-fuel-pilot-aerial/)
+* [Alphacoders](https://wall.alphacoders.com/newest_wallpapers.php?lang=Chinese)
 
 # 使用方法
 ```
